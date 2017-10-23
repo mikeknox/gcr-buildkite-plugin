@@ -1,0 +1,7 @@
+{
+  "name": "GCR",
+  "description": "Login to GCR in your build steps.",
+  "author": "@mikeknox",
+  "public": true,
+  "requirements": ["curl", "bash", "gcp"]
+}
