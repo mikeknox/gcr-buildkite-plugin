@@ -25,8 +25,8 @@ if [[ "${BUILDKITE_PLUGIN_GCR_LOGIN:-}" =~ ^(true|1)$ ]] ; then
 
   echo "~~~ Authenticating with GCP GCR"
 
-  gcr_login=$(docker login -u _json_key -p "$( echo ${BUILDKITE_PLUGIN_GCR_JSON_KEY} )" https://gcr.io) || exit $?
+  gcr_login=$(docker login -u _json_key -p "$( echo ${BUILDKITE_PLUGIN_GCR_JSON_KEY:-} )" https://gcr.io) || exit $?
 
   # despite all the horror above, if we have docker > 17.06 it still breaks...
-  eval "$(sed 's/-e none//' <<< "$gcr_login")"
+  echo "$gcr_login"
 fi
