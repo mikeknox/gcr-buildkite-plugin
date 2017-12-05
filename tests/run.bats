@@ -9,7 +9,7 @@ load '/usr/local/lib/bats/load.bash'
   export BUILDKITE_PLUGIN_GCR_JSON_KEY=foo
 
   stub docker \
-    "login -u _json_key -p foo https://gcr.io : echo Login Succeeded" \
+    "login -u _json_key -p foo https://gcr.io : echo Login Succeeded"
 
   run $PWD/hooks/pre-command
 
