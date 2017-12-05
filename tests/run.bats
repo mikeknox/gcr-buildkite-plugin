@@ -9,12 +9,12 @@ load '/usr/local/lib/bats/load.bash'
   export BUILDKITE_PLUGIN_GCR_JSON_KEY=foo
 
   stub docker \
-    'docker login -u _json_key -p "$( echo ${BUILDKITE_PLUGIN_GCR_JSON_KEY} )" https://gcr.io : echo Log in to a Docker registry'
+    "login -u _json_key -p foo https://gcr.io : echo Login Succeeded" \
 
   run $PWD/hooks/pre-command
 
   assert_success
-  # assert_output --partial "Log in to a Docker registry"
+  assert_output --partial "Login Succeeded"
 
   unstub docker
   unset BUILDKITE_PLUGIN_GCR_JSON_KEY
