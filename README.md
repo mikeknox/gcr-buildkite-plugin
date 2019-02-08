@@ -16,8 +16,8 @@ This will login docker to GCR prior to running your script.
 steps:
   - command: ./run_build.sh
     plugins:
-      gcr#v1.0.0:
-        login: true
+      - gcr#v1.0.0:
+          login: true
 ```
 
 ## Options
