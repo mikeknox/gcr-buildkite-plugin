@@ -1,6 +1,20 @@
-version: '2'
+version: '2.2'
+
 services:
+  lint:
+    image: buildkite/plugin-linter
+    command: ['--id', 'mikeknox/gcr']
+    volumes:
+      - ".:/plugin"
+
   tests:
     image: buildkite/plugin-tester
     volumes:
-      - ".:/plugin:ro"
+      - ".:/plugin"
+
+  shellcheck:
+    image: koalaman/shellcheck:latest
+    command: hooks/pre-command 
+    working_dir: /plugin
+    volumes:
+      - ".:/plugin"
